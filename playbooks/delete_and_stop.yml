@@ -1,0 +1,29 @@
+- hosts: webservers
+  gather_facts: no
+  tasks:
+    - shell: docker ps -q
+      register: running_ps
+    
+    - shell: docker ps -q -a
+      register: all_ps
+    
+    - shell: docker images -q
+      register: images
+
+    - command:
+        cmd: 'docker stop {{ item }}'
+      become: yes
+      loop: '{{ running_ps.stdout_lines }}'
+      ignore_errors: true
+
+    - command:
+        cmd: 'docker rm -f {{ item }}'
+      become: yes
+      loop: '{{ all_ps.stdout_lines }}'
+      ignore_errors: true
+
+    - command:
+        cmd: docker rmi -f {{ item }}
+      become: yes
+      loop: '{{ images.stdout_lines }}'
+      ignore_errors: true

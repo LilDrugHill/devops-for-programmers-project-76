@@ -1,0 +1,16 @@
+- hosts: webservers
+  gather_facts: no
+  tasks:
+    - name: start datadog
+      import_role:
+        name: datadog.datadog
+        vars:
+        datadog_api_key: '{{DD_API_KEY}}'
+        datadog_site: "datadoghq.eu"
+        datadog_checks:
+          http_check:
+            init_config:
+            instances:
+              - name: app_check
+                url: 'http://127.0.0.1:3000'
+      become: yes
