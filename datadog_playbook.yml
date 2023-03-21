@@ -5,7 +5,7 @@
       import_role:
         name: datadog.datadog
         vars:
-        datadog_api_key: '{{DD_API_KEY}}'
+        datadog_api_key: '{{ DD_API_KEY }}'
         datadog_site: "datadoghq.eu"
         datadog_checks:
           http_check:

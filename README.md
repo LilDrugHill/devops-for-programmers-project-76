@@ -29,6 +29,8 @@ ansible-vault encrypt group_vars/all/vault.yml
 **Run**
 
 ```bash
+make install-ansible-req
+
 make first-start
 ```
 

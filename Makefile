@@ -13,7 +13,7 @@ reset-all:
 edit-secrets:
 	ansible-vault edit group_vars/webservers/vault.yml
 
-install-roles:
+install-ansible-req:
 	ansible-galaxy install -r requirements.yml
 
 setup-datadog:
