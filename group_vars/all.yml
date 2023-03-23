@@ -1,5 +1,0 @@
----
-REDMINE_DB_POSTGRES: db-postgresql-fra1-14047-do-user-13682295-0.b.db.ondigitalocean.com
-REDMINE_DB_DATABASE: defaultdb
-REDMINE_DB_USERNAME: doadmin
-REDMINE_DB_PORT: '25060'

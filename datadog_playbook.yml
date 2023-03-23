@@ -4,13 +4,13 @@
     - name: start datadog
       import_role:
         name: datadog.datadog
-        vars:
-        datadog_api_key: '{{ DD_API_KEY }}'
-        datadog_site: "datadoghq.eu"
+      vars:
+        datadog_api_key: '{{ datadog_api_key }}'
+        datadog_site: '{{ datadog_site }}'
         datadog_checks:
           http_check:
             init_config:
             instances:
               - name: app_check
-                url: 'http://127.0.0.1:3000'
+                url: '{{ apps_localhost }}'
       become: yes

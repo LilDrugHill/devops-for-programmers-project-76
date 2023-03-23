@@ -5,7 +5,12 @@
       pip: 
         name: docker
       tags: req
-        
+
+    - name: copy .env
+      template:
+        src: .env
+        dest: /root/.env
+
     - name: start redmine
       community.docker.docker_container:
         name: redmine
@@ -14,12 +19,7 @@
         state: started
         ports:
           - 3000:3000
-        env:
-          REDMINE_DB_PASSWORD: '{{ REDMINE_DB_PASSWORD }}'
-          REDMINE_DB_POSTGRES: '{{ REDMINE_DB_POSTGRES }}'
-          REDMINE_DB_DATABASE: '{{ REDMINE_DB_DATABASE }}'
-          REDMINE_DB_USERNAME: '{{ REDMINE_DB_USERNAME }}'
-          REDMINE_DB_PORT: '{{ REDMINE_DB_PORT }}'
+        env_file: .env
       tags: web-start
 
 
