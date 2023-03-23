@@ -8,7 +8,7 @@
 
     - name: copy .env
       template:
-        src: .env
+        src: templates/.env
         dest: /root/.env
 
     - name: start redmine
